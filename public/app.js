@@ -37,10 +37,14 @@ plusButton.addEventListener('click', function () {
 fetch('https://jsonplaceholder.typicode.com/posts').then((response) => {
     return response.json();
 }).then((posts) => {
-    posts.forEach((post) => {
+    posts.forEach((post, i) => {
         const postDiv = document.createElement('div');
         postDiv.classList.add('post');
+        if (i % 2 === 1) {
+            postDiv.classList.add('bold');
+        }
         postDiv.innerText = `${post.id}: ${post.title}`;
         postListDiv.appendChild(postDiv);
     });
 });
+
